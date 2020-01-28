@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_221704) do
+ActiveRecord::Schema.define(version: 2020_01_28_222336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -23,10 +23,22 @@ ActiveRecord::Schema.define(version: 2020_01_28_221704) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "merchant_id"
+    t.citext "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_invoices_on_customer_id"
+    t.index ["merchant_id"], name: "index_invoices_on_merchant_id"
+  end
+
   create_table "merchants", force: :cascade do |t|
     t.citext "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "merchants"
 end
