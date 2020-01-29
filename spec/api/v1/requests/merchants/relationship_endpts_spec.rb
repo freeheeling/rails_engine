@@ -10,6 +10,6 @@ RSpec.describe 'Merchants API relationship endpoints' do
     items = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(parsed_items[:data].count).to eq(2)
+    expect(items[:data].count).to eq(2)
   end
 end
