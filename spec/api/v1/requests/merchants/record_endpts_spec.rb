@@ -22,6 +22,4 @@ RSpec.describe 'Merchants API record endpoints' do
     expect(response).to be_successful
     expect(merchant[:data][:id].to_i).to eq(id)
   end
-
-
 end
