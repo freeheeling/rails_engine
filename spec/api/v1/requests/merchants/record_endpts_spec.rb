@@ -9,7 +9,18 @@ RSpec.describe 'Merchants API record endpoints' do
     merchants = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchants[:data].count).to eq(3)
+    expect(merchants[:data].size).to eq(3)
     expect(merchants[:data].first[:attributes]).to include(:name)
+  end
+
+  it 'can get a specific merchant by id' do
+    id = create(:merchant).id
+
+    get "/api/v1/merchants/#{id}"
+
+    merchant = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(merchant[:data][:attributes][:id]).to eq(id)
   end
 end
