@@ -18,7 +18,7 @@ RSpec.describe 'Merchants API find all endpoints' do
     merchants = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchants[:data]).to be_an Array
+    expect(merchants[:data]).to be_instance_of Array
     expect(merchants[:data].size).to eq(1)
     expect(merchants[:data].first[:id].to_i).to eq(@merchant.id)
   end
@@ -31,7 +31,7 @@ RSpec.describe 'Merchants API find all endpoints' do
     merchants = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchants[:data]).to be_an Array
+    expect(merchants[:data]).to be_instance_of Array
     expect(merchants[:data].size).to eq(2)
     expect(merchants[:data].first[:id].to_i).to eq(@merchant.id)
     expect(merchants[:data].last[:id].to_i).to eq(merchant.id)
@@ -45,7 +45,7 @@ RSpec.describe 'Merchants API find all endpoints' do
     merchants = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchants[:data]).to be_an Array
+    expect(merchants[:data]).to be_instance_of Array
     expect(merchants[:data].size).to eq(2)
     expect(merchants[:data].first[:id].to_i).to eq(@merchant.id)
     expect(merchants[:data].last[:id].to_i).to eq(merchant.id)
@@ -59,7 +59,7 @@ RSpec.describe 'Merchants API find all endpoints' do
     merchants = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchants[:data]).to be_an Array
+    expect(merchants[:data]).to be_instance_of Array
     expect(merchants[:data].size).to eq(2)
     expect(merchants[:data].first[:id].to_i).to eq(@merchant.id)
     expect(merchants[:data].last[:id].to_i).to eq(merchant.id)
