@@ -10,7 +10,6 @@ RSpec.describe 'Merchants API record endpoints' do
 
     expect(response).to be_successful
     expect(merchants[:data].size).to eq(3)
-    expect(merchants[:data].first[:attributes]).to include(:name)
   end
 
   it 'can get a specific merchant by id' do
@@ -21,6 +20,8 @@ RSpec.describe 'Merchants API record endpoints' do
     merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchant[:data][:attributes][:id]).to eq(id)
+    expect(merchant[:data][:id].to_i).to eq(id)
   end
+
+
 end
