@@ -51,7 +51,7 @@ namespace :import_csv_data do
 
   desc 'Imports transactions from CSV file'
   task transactions: :environment do
-    file = 'db/data/transcations.csv'
+    file = 'db/data/transactions.csv'
 
     CSV.foreach(file, headers: true) do |row|
       Transaction.create!(row.to_hash)
