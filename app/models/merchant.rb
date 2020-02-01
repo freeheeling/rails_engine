@@ -21,4 +21,13 @@ class Merchant < ApplicationRecord
       where("date(invoices.created_at) = date('#{date}')").
       sum('invoice_items.quantity * invoice_items.unit_price')
   end
+
+  def favorite_customer
+    customers.joins(:transactions).
+      select('customers.*, count(invoices.customer_id) AS sales').
+      where(transactions: {result: 'success'}).
+      group(:id).
+      order('sales DESC').
+      first
+  end
 end
