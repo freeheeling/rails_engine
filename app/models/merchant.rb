@@ -11,8 +11,14 @@ class Merchant < ApplicationRecord
     joins(:invoice_items, :transactions).
       select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue').
       group(:id).
-      where(transactions: {result: 'success'}).
       order('revenue DESC').
       limit(quantity)
+  end
+
+  def self.revenue_on_date(date)
+    Invoice.joins(:invoice_items, :transactions).
+      where(transactions: {result: 'success'}).
+      where("date(invoices.created_at) = date('#{date}')").
+      sum('invoice_items.quantity * invoice_items.unit_price')
   end
 end
