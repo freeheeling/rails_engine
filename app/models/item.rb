@@ -6,4 +6,13 @@ class Item < ApplicationRecord
   has_many :transactions, through: :invoices
 
   validates_presence_of :name, :description, :unit_price
+
+  def self.revenue_ranked(quantity)
+    joins(:invoice_items, :transactions).
+      select('items.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue').
+      merge(Transaction.successful).
+      group(:id).
+      order('revenue DESC').
+      limit(quantity)
+  end
 end
