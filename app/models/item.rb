@@ -15,4 +15,16 @@ class Item < ApplicationRecord
       order('revenue DESC').
       limit(quantity)
   end
+
+  def best_day(item_id)
+    Invoice.joins(:items, :transactions).
+      select("invoices.*, date_trunc('day', invoices.created_at) AS date, sum(invoice_items.quantity) AS sales").
+      where("items.id = ?", "#{item_id}").
+      merge(Transaction.successful).
+      group(:id).
+      group('date').
+      order('sales desc').
+      order('date desc').
+      first
+  end
 end
