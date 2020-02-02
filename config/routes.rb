@@ -22,6 +22,8 @@ Rails.application.routes.draw do
         get '/:id/favorite_merchant', to: 'merchants#show'
       end
       resources :customers, only: [:index, :show]
+
+      resources :items, only: [:index]
     end
   end
 end
