@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       end
       resources :customers, only: [:index, :show]
 
+      namespace :items do
+        get '/find', to: 'query#show'
+      end
       resources :items, only: [:index, :show]
     end
   end
