@@ -25,4 +25,30 @@ RSpec.describe 'Items API business intelligence endpoints' do
     expect(items[:data].first[:id].to_i).to eq(item_2.id)
     expect(items[:data].last[:id].to_i).to eq(item_3.id)
   end
+
+  xit 'gets date with most sales for a given item based on invoice date' do
+    item = create(:item)
+    invoice_1 = create(:invoice, created_at: '2014-03-27')
+    invoice_2 = create(:invoice, created_at: '2014-03-27')
+    invoice_3 = create(:invoice, created_at: '2014-04-27')
+    invoice_4 = create(:invoice, created_at: '2014-04-27')
+    invoice_5 = create(:invoice, created_at: '2014-05-27')
+    create(:invoice_item, item: item, invoice: invoice_1)
+    create(:invoice_item, item: item, invoice: invoice_2)
+    create(:invoice_item, item: item, invoice: invoice_3)
+    create(:invoice_item, item: item, invoice: invoice_4)
+    create(:invoice_item, item: item, invoice: invoice_5)
+    create(:transaction, invoice: invoice_1)
+    create(:transaction, result: 'failed', invoice: invoice_2)
+    create(:transaction, invoice: invoice_3)
+    create(:transaction, result: 'failed', invoice: invoice_4)
+    create(:transaction, invoice: invoice_5)
+
+    get "/api/v1/items/#{item.id}/best_day"
+
+    date = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(date[:data][:attributes][:best_day]).to eq(invoice_5.created_at)
+  end
 end
