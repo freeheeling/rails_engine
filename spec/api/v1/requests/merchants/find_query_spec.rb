@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Merchants API find endpoints' do
   before :each do
-    @merchant =  create(
-      :merchant,
-      name: 'A1',
-      created_at: '2012-03-27 14:53:59',
-      updated_at: '2012-03-28 14:53:59'
-    )
+    @merchant =  create(:merchant)
   end
 
   it 'can find a record based on merchant id query' do
