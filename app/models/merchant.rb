@@ -25,7 +25,7 @@ class Merchant < ApplicationRecord
   def favorite_customer
     customers.joins(:transactions).
       select('customers.*, count(invoices.customer_id) AS sales').
-      where(transactions: {result: 'success'}).
+      merge(Transaction.successful).
       group(:id).
       order('sales DESC').
       first
