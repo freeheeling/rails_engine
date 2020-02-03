@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Items API random endpoint' do
-  it 'cant get a random item' do
+  it 'can get a random item' do
     create_list(:item, 3)
 
     get '/api/v1/items/random'
