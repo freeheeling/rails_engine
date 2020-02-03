@@ -4,6 +4,11 @@ class Api::V1::Invoices::QueryController < ApplicationController
     render json: InvoiceSerializer.new(invoice)
   end
 
+  def index
+    invoices = Invoice.where(query_params)
+    render json: InvoiceSerializer.new(invoices.sort)
+  end
+
   private
     def query_params
       params.permit(
