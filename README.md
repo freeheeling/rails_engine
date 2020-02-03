@@ -24,7 +24,7 @@ Rails Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://gi
 
 The Rails Engine database is comprised of six resource types – Merchants, Customers, Invoices, Items, Transactions and Invoice Items – each of whose attributes and assoications are depicted by the following Active Designer-generated schema.
 
-![schema](<img width="662" alt="Screen Shot 2020-02-03 at 7 43 12 AM" src="https://user-images.githubusercontent.com/50811220/73662572-4a408f00-4659-11ea-9c63-fa9b8846290d.png">)
+![schema](https://user-images.githubusercontent.com/50811220/73662572-4a408f00-4659-11ea-9c63-fa9b8846290d.png)
 
 ## Endpoints
 
