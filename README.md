@@ -1,6 +1,6 @@
 # Rails Engine
 
-Rails Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://github.com/Netflix/fast_jsonapi) gem to expose data via a web-based API. The application loads, parses, searches and executes business intelligence queries against generated sales data.
+Rails Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://github.com/Netflix/fast_jsonapi) gem to expose data via a web-based API. The application loads, parses, searches and executes business intelligence queries against fabricated sales data.
 
 ## Local Installation
 
