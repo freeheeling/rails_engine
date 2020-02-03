@@ -4,6 +4,11 @@ class Api::V1::Transactions::QueryController < ApplicationController
     render json: TransactionSerializer.new(transaction)
   end
 
+  def index
+    transactions = Transaction.where(query_params)
+    render json: TransactionSerializer.new(transactions.sort)
+  end
+
   private
     def query_params
       params.permit(
