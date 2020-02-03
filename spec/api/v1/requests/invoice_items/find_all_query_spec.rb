@@ -9,8 +9,8 @@ RSpec.describe 'Invoice Items API find all endpoints' do
 
     @invoice_item = create(
       :invoice_item,
-      quantity: '4',
-      unit_price: '1.23',
+      quantity: '0',
+      unit_price: '01.23',
       created_at: '2012-03-27 14:53:59',
       updated_at: '2012-03-28 14:53:59',
       item_id: item_id,
