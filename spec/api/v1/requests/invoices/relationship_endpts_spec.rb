@@ -28,4 +28,21 @@ RSpec.describe 'Invoices API realationship endpoints' do
     expect(invoice_items[:data].size).to eq(2)
     expect(invoice_items[:data].first[:type]).to eq('invoice_item')
   end
+
+  it 'get a collection of items associated with a given invoice' do
+    invoice = create(:invoice)
+    item_1 = create(:item)
+    item_2 = create(:item)
+    create(:invoice_item, invoice: invoice, item: item_1)
+    create(:invoice_item, invoice: invoice, item: item_2)
+
+    get "/api/v1/invoices/#{invoice.id}/items"
+
+    items = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(items).to be_instance_of Hash
+    expect(items[:data].length).to eq(2)
+    expect(items[:data].first[:type]).to eq('item')
+  end
 end
