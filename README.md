@@ -1,6 +1,6 @@
-# Rales Engine
+# Rails Engine
 
-Rales Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://github.com/Netflix/fast_jsonapi) gem to expose data via a web-based API. The application loads, parses, searches and executes business intelligence queries against generated sales data.
+Rails Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://github.com/Netflix/fast_jsonapi) gem to expose data via a web-based API. The application loads, parses, searches and executes business intelligence queries against generated sales data.
 
 ## Local Installation
 
@@ -22,7 +22,7 @@ Rales Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://gi
 
 ## Database Composition
 
-The Rales Engine database is comprised of six resource types – Merchants, Customers, Invoices, Items, Transactions and Invoice Items – each of whose attributes and assoications are depicted by the following Active Designer-generated schema.
+The Rails Engine database is comprised of six resource types – Merchants, Customers, Invoices, Items, Transactions and Invoice Items – each of whose attributes and assoications are depicted by the following Active Designer-generated schema.
 
 ![schema](https://user-images.githubusercontent.com/50811220/69841424-f4192f00-1256-11ea-8f62-e353af4d2d55.png)
 
