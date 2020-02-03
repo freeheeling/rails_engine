@@ -33,6 +33,8 @@ Rails.application.routes.draw do
         get '/:id/best_day', to: 'dates#show'
       end
       resources :items, only: [:index, :show]
+
+      resources :invoices, only: [:index, :show]
     end
   end
 end
