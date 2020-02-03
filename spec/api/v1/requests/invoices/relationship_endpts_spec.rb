@@ -45,4 +45,16 @@ RSpec.describe 'Invoices API realationship endpoints' do
     expect(items[:data].length).to eq(2)
     expect(items[:data].first[:type]).to eq('item')
   end
+
+  it 'get the customer associated with a given invoice' do
+    customer = create(:customer)
+    invoice = create(:invoice, customer: customer)
+
+    get "/api/v1/invoices/#{invoice.id}/customer"
+
+    invoice_customer = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(invoice_customer[:data][:id].to_i).to eq(customer.id)
+  end
 end
