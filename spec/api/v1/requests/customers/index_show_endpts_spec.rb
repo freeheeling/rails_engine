@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Customers API record endpoints' do
+RSpec.describe 'Customers API index and show endpoints' do
   it 'can get a list of all customers' do
     create_list(:customer, 3)
 
@@ -19,6 +19,7 @@ RSpec.describe 'Customers API record endpoints' do
 
     customer = JSON.parse(response.body, symbolize_names: true)
 
+    expect(response).to be_successful
     expect(customer[:data][:id].to_i).to eq(id)
   end
 end

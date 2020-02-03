@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Items API record endpoints' do
+RSpec.describe 'Items API index and show endpoints' do
   it 'can get a list of all items' do
     create_list(:item, 3)
 
@@ -19,6 +19,7 @@ RSpec.describe 'Items API record endpoints' do
 
     item = JSON.parse(response.body, symbolize_names: true)
 
+    expect(response).to be_successful
     expect(item[:data][:id].to_i).to eq(id)
   end
 end
