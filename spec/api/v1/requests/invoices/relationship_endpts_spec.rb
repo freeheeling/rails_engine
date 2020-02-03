@@ -29,7 +29,7 @@ RSpec.describe 'Invoices API realationship endpoints' do
     expect(invoice_items[:data].first[:type]).to eq('invoice_item')
   end
 
-  it 'get a collection of items associated with a given invoice' do
+  it 'gets a collection of items associated with a given invoice' do
     invoice = create(:invoice)
     item_1 = create(:item)
     item_2 = create(:item)
@@ -46,7 +46,7 @@ RSpec.describe 'Invoices API realationship endpoints' do
     expect(items[:data].first[:type]).to eq('item')
   end
 
-  it 'get the customer associated with a given invoice' do
+  it 'gets the customer associated with a given invoice' do
     customer = create(:customer)
     invoice = create(:invoice, customer: customer)
 
@@ -58,7 +58,7 @@ RSpec.describe 'Invoices API realationship endpoints' do
     expect(invoice_customer[:data][:id].to_i).to eq(customer.id)
   end
 
-  it 'get the merchant associated with a given invoice' do
+  it 'gets the merchant associated with a given invoice' do
     merchant = create(:merchant)
     invoice = create(:invoice, merchant: merchant)
 
