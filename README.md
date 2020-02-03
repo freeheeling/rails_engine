@@ -6,7 +6,7 @@ Rales Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://gi
 
 - clone down the repository: `$ git clone https://github.com/freeheeling/rails_engine`
 - change into directory: `$ cd rails_engine`
-- run bundler: `$ bundle intsall`
+- run bundler: `$ bundle install`
 - prepare the database: `$ rake db:{create,migrate}` 
 - then: 
   ```
