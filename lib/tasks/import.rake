@@ -1,6 +1,6 @@
 require 'csv'
 
-namespace :import_csv_data do
+namespace :import do
 
   desc 'Imports customers from CSV file'
   task customers: :environment do
