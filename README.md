@@ -10,12 +10,12 @@ Rails Engine utilizes the Ruby on Rails framework and [Fast JSON API](https://gi
 - prepare the database: `$ rake db:{create,migrate}` 
 - then: 
   ```
-  $ rake import_csv_data:merchants
-  $ rake import_csv_data:customers
-  $ rake import_csv_data:invoices
-  $ rake import_csv_data:transactions
-  $ rake import_csv_data:items
-  $ rake import_csv_data:invoice_items
+  $ rake import:merchants
+  $ rake import:customers
+  $ rake import:invoices
+  $ rake import:transactions
+  $ rake import:items
+  $ rake import:invoice_items
   ```
 - initialize Rails server: `$ rails s`
 - open browser, and visit: `http://localhost:3000`, which serves as the domain for all resource endpoints
